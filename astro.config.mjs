@@ -6,6 +6,6 @@ export default defineConfig({
     devToolbar: {
         enabled: false
     },
-    site: 'jakobsiebenhuetter.github.io',
+    site: 'https://jakobsiebenhuetter.github.io',
     base: 'Blog.Web'
 });
