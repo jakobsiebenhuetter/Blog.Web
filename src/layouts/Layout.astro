@@ -8,9 +8,6 @@ export interface ILink {
 	href: string;
 	target?: string;
 }
-
-const {title, description} = Astro.props;
-
 const dummyLinks: ILink[] = [
   {
     name: "Home",
@@ -22,10 +19,12 @@ const dummyLinks: ILink[] = [
     target: "_blank",
   },
   {
-    name: "Resources",
+    name: "LLMs",
     href: "#",
   },
-];
+]; 
+
+const {title, description, links = dummyLinks} = Astro.props;
 ---
 
 <!doctype html>
@@ -41,7 +40,7 @@ const dummyLinks: ILink[] = [
 		<title>{title}</title>
 	</head>
 	<body>
-		<Header links={dummyLinks}></Header>
+		<Header links={links}></Header>
 		<main>
 			<slot />
 		</main>
