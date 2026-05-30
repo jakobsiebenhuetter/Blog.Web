@@ -1,30 +1,11 @@
 ---
 import '../assets/css/global.css';
 import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
 import Footer from '../components/Footer.astro';
+import { headerProps, sidebarProps } from '../assets/data/dummyData/dummy';
 
-export interface ILink {
-	name: string;
-	href: string;
-	target?: string;
-}
-const dummyLinks: ILink[] = [
-  {
-    name: "Home",
-    href: "/Blog-Web/",
-  },
-  {
-    name: "Blog",
-    href: "/Blog-Web/blog",
-    target: "_blank",
-  },
-  {
-    name: "LLMs",
-    href: "#",
-  },
-]; 
-
-const {title, description, links = dummyLinks} = Astro.props;
+const {title, description, headerLinks = headerProps.links, sidebarLinks = sidebarProps.links} = Astro.props;
 ---
 
 <!doctype html>
@@ -40,11 +21,14 @@ const {title, description, links = dummyLinks} = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<Header links={links}></Header>
-		<main>
-			<slot />
-		</main>
-		<Footer></Footer>
+		<Header links={headerLinks} />
+		<div class="layout-body">
+			<Sidebar links={sidebarLinks} />
+			<main>
+				<slot />
+			</main>
+		</div>
+		<Footer />
 	</body>
 	
 </html>
@@ -60,7 +44,14 @@ const {title, description, links = dummyLinks} = Astro.props;
 		flex-direction: column;
 	}
 
+	.layout-body {
+		flex: 1;
+		display: flex;
+		flex-direction: row;
+	}
+
 	main {
 		flex: 1;
 	}
+	
 </style>

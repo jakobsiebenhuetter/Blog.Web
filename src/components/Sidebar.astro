@@ -1,0 +1,22 @@
+---
+import type {ISidebarProps} from "../types";
+
+
+const { links } = Astro.props as ISidebarProps;
+
+const currentPath = Astro.url.pathname;
+---
+
+<aside
+  aria-label="Sidebar"
+  class="w-64 p-4 font-mono bg-gray-100 border-r border-gray-200 min-h-full"
+><ul>
+    {links.map((link) => 
+         (<li class={currentPath === link.href ? "bg-gray-300" : ""}>
+        <a href={link.href} target={link.target}>
+            {link.name}
+        </a>
+    </li>)
+    )}
+</ul>
+</aside>

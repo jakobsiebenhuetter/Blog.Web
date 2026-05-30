@@ -1,10 +1,6 @@
 ---
-import type { ILink } from "../layouts/Layout.astro";
-
-export interface IProps {
-    links: ILink[];
-}
-const {links} = Astro.props as IProps;
+import type { IHeaderProps } from "../types";
+const {links} = Astro.props as IHeaderProps;
 ---
 
 <header class="font-mono">
@@ -31,18 +27,26 @@ const {links} = Astro.props as IProps;
 
 <style>
     header {
-        background-color: rebeccapurple;
+      display: flex;
+      align-items: center;
+      background-color: rgb(240, 218, 54);
+   
+      height: 75px;
     }
+
     ul {
-        display: flex;
+        display: flex-start;
+        align-items: center;
+        justify-content: center;
     }
 
     li {
-        list-style: none;
-        margin: 0 16px;
+      display: inline-flex;
+      list-style: none;
+      margin: 0 16px;
     }
 
     li > a {
-        color: white;
+      color: #666;
     }
 </style>

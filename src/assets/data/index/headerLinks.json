@@ -1,0 +1,20 @@
+{
+    "links": [
+        {
+            "name": "Home",
+            "href": "/Blog-Web/"
+        },
+        {
+            "name": "Blog",
+            "href": "/Blog-Web/blog"
+        },
+        {
+            "name": "Webtechnologien",
+            "href": "/Blog-Web/webtechnologien"
+        },
+        {
+            "name": "Projekte",
+            "href": "/Blog-Web/ueber-mich"
+        }
+    ]
+}
