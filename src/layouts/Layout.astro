@@ -47,7 +47,13 @@ const {title, description, headerLinks = headerProps.links, sidebarLinks = sideb
 	.layout-body {
 		flex: 1;
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
+	}
+
+	@media (min-width: 768px) {
+		.layout-body {
+			flex-direction: row;
+		}
 	}
 
 	main {

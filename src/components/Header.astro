@@ -3,7 +3,7 @@ import type { IHeaderProps } from "../types";
 const {links} = Astro.props as IHeaderProps;
 ---
 
-<header class="font-mono">
+<header>
   <nav>
     <ul>
       {
@@ -30,8 +30,14 @@ const {links} = Astro.props as IHeaderProps;
       display: flex;
       align-items: center;
       background-color: rgb(240, 218, 54);
-   
+      font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
       height: 75px;
+    }
+
+    @media (max-width: 480px) {
+      li {
+        margin: 0 8px;
+      }
     }
 
     ul {
