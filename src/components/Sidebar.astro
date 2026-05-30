@@ -1,21 +1,21 @@
 ---
 import type { ISidebarProps } from "../types";
 
-
 const { links } = Astro.props as ISidebarProps;
 
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname.replace(/\/+$/, "");
+
 ---
 
 <aside class="sidebar" aria-label="Sidebar">
   <ul>
-    {links.map((link) => (
-      <li class={currentPath === link.href ? "active" : ""}>
-        <a href={link.href} target={link.target}>
-          {link.name}
-        </a>
-      </li>
-    ))}
+    {
+      links.map((link) => (
+        <li class={currentPath === link.href.replace(/\/+$/, "") ? "active" : ""}>
+          <a href={link.href} target={link.target}>{link.name}</a>
+        </li>
+      ))
+    }
   </ul>
 </aside>
 
@@ -52,7 +52,7 @@ const currentPath = Astro.url.pathname;
     background: #e5e7eb;
   }
 
-  li.active { 
+  li.active {
     background: #d1d5db;
     font-weight: 500;
   }

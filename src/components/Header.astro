@@ -1,6 +1,8 @@
 ---
 import type { IHeaderProps } from "../types";
 const {links} = Astro.props as IHeaderProps;
+
+const currentPath = Astro.url.pathname.replace(/\/+$/, "");
 ---
 
 <header>
@@ -9,7 +11,7 @@ const {links} = Astro.props as IHeaderProps;
       {
         links.map((link) => (
           <li>
-            <a href={link.href} target={link.target}>
+            <a href={link.href} target={link.target} class={currentPath === link.href.replace(/\/+$/, "") ? 'active' : ''} >
               {link.name}
             </a>
           </li>
@@ -43,7 +45,6 @@ const {links} = Astro.props as IHeaderProps;
     ul {
         display: flex-start;
         align-items: center;
-        justify-content: center;
     }
 
     li {
@@ -54,5 +55,10 @@ const {links} = Astro.props as IHeaderProps;
 
     li > a {
       color: #666;
+    }
+
+    li > a.active {
+      color: #000;
+      font-weight: 500;
     }
 </style>
